@@ -11,7 +11,8 @@
         @timeupdate="onTimeUpdate"
         @play="onVideoPlay"
         @pause="onVideoPause"
-        @go-back="goBack" />
+        @go-back="goBack"
+        @open-ai="handleOpenAIFromPlayer" />
     </div>
 
     <!-- AI Panel Side Panel (Floating) -->
@@ -142,6 +143,14 @@ export default {
       if (this.$refs.videoPlayer) {
         this.pausedAt = this.$refs.videoPlayer.getCurrentTime()
         this.$refs.videoPlayer.pause()
+        this.isVideoPlaying = false
+        this.showAIPanel = true
+      }
+    },
+    handleOpenAIFromPlayer() {
+      // Handle AI button click from video player
+      if (this.$refs.videoPlayer) {
+        this.pausedAt = this.$refs.videoPlayer.getCurrentTime()
         this.isVideoPlaying = false
         this.showAIPanel = true
       }

@@ -21,7 +21,7 @@
       @mouseleave="onMouseLeave"
       @mousemove="onMouseMove">
       
-      <!-- Top Bar with Back Button and Title -->
+      <!-- Top Bar with Back Button, Title, and AI Button -->
       <div class="absolute top-0 left-0 right-0 p-4 flex justify-between items-center pointer-events-auto">
         <button
           @click.stop="handleGoBack"
@@ -31,7 +31,11 @@
         <div class="absolute left-1/2 -translate-x-1/2 text-white text-lg font-bold">
           {{ movieTitle }}
         </div>
-        <div class="w-10"></div> <!-- Spacer -->
+        <button
+          @click.stop="handleOpenAI"
+          class="w-10 h-10 rounded-ios-lg bg-gradient-to-br from-theater-primary/80 to-theater-secondary/80 backdrop-blur-md hover:from-theater-primary hover:to-theater-secondary transition-all duration-200 flex items-center justify-center active:scale-95 border border-theater-primary/30 z-10 shadow-ios">
+          <SparklesIcon class="w-5 h-5 text-white" />
+        </button>
       </div>
 
       <!-- Bottom Controls -->
@@ -109,7 +113,8 @@ import {
   PauseIcon, 
   ArrowLeftIcon,
   SpeakerWaveIcon,
-  SpeakerXMarkIcon
+  SpeakerXMarkIcon,
+  SparklesIcon
 } from '@heroicons/vue/24/solid'
 
 export default {
@@ -119,7 +124,8 @@ export default {
     PauseIcon,
     ArrowLeftIcon,
     SpeakerWaveIcon,
-    SpeakerXMarkIcon
+    SpeakerXMarkIcon,
+    SparklesIcon
   },
   props: {
     videoUrl: {
@@ -131,7 +137,7 @@ export default {
       required: true
     }
   },
-  emits: ['timeupdate', 'play', 'pause', 'go-back'],
+  emits: ['timeupdate', 'play', 'pause', 'go-back', 'open-ai'],
   data() {
     return {
       currentTime: 0,
@@ -327,6 +333,13 @@ export default {
     },
     handleGoBack() {
       this.$emit('go-back')
+    },
+    handleOpenAI() {
+      // Pause video if playing, then emit event to open AI panel
+      if (!this.isPaused) {
+        this.pause()
+      }
+      this.$emit('open-ai')
     },
     // Public methods for parent component
     play() {
