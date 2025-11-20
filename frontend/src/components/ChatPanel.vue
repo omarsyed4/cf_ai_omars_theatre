@@ -114,6 +114,7 @@ import {
   StopIcon,
   PaperAirplaneIcon
 } from '@heroicons/vue/24/solid'
+import API_BASE from '../config/api.js'
 
 export default {
   name: 'ChatPanel',
@@ -386,8 +387,8 @@ export default {
       console.log('[ChatPanel] Sending request to /api/query:', requestBody)
 
       try {
-        console.log('[ChatPanel] Making fetch request to /api/query')
-        console.log('[ChatPanel] Full URL would be:', window.location.origin + '/api/query')
+        const apiUrl = `${API_BASE}/api/query`
+        console.log('[ChatPanel] Making fetch request to:', apiUrl)
         
         // Create AbortController for timeout
         const controller = new AbortController()
@@ -397,7 +398,7 @@ export default {
         }, 30000) // 30 second timeout
         
         // Send to backend (use pausedAt for context, not currentTime which may have changed)
-        const response = await fetch('/api/query', {
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
