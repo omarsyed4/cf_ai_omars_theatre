@@ -1,0 +1,20 @@
+name = "omars-theater"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[ai]
+binding = "AI"
+
+[[durable_objects.bindings]]
+name = "MEMORY"
+class_name = "MemoryDO"
+script_name = "omars-theater"
+
+[env.production]
+name = "omars-theater"
+
+[env.production.durable_objects]
+bindings = [
+  { name = "MEMORY", class_name = "MemoryDO", script_name = "omars-theater" }
+]
+
