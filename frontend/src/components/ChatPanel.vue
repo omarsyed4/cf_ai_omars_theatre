@@ -181,17 +181,14 @@ export default {
       deep: true
     },
     isLoading(newVal) {
-      // When AI finishes responding, focus input for follow-up and restart mic
+      // When AI finishes responding, focus input for follow-up (user must press Enter to start mic)
       if (!newVal && this.lastAIMessageIndex >= 0) {
         this.$nextTick(() => {
           if (this.$refs.textInputRef) {
             this.$refs.textInputRef.focus()
           }
-          // Auto-start recording for follow-up question (with delay to ensure previous is stopped)
-          console.log('[ChatPanel] AI finished, will auto-start mic for follow-up in 500ms')
-          setTimeout(() => {
-            this.startRecording()
-          }, 500)
+          // Mic will only start when user presses Enter (handled by handleEnterKey)
+          console.log('[ChatPanel] AI finished, waiting for user to press Enter for follow-up')
         })
       }
     },
