@@ -385,9 +385,13 @@ export default {
       }
       
       console.log('[ChatPanel] Sending request to /api/query:', requestBody)
+      console.log('[ChatPanel] API_BASE value:', API_BASE)
+      console.log('[ChatPanel] Current hostname:', window.location.hostname)
+      console.log('[ChatPanel] Current origin:', window.location.origin)
 
       try {
         const apiUrl = `${API_BASE}/api/query`
+        console.log('[ChatPanel] Constructed API URL:', apiUrl)
         console.log('[ChatPanel] Making fetch request to:', apiUrl)
         
         // Create AbortController for timeout
