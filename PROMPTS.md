@@ -47,7 +47,7 @@ The conversation memory should persist using Cloudflare Durable Objects. Impleme
 
 ### 8. Technical Documentation
 
-First, we make the technical document (like the Markdown file) with all the information on how this was created. This should just be a list of all the prompts that I used when I was creating this project. All the prompts I used on Vue to create this, everything I asked to make this, but just the main things. So, I should only have like 10 to 12 prompts listed. They can be very in-depth things that I really wanted all the features that I needed from the functionality, everything I put into the chat to get to where we are now. Make it concise, make it look clean. This is way too lengthy. We need to make this as concise as possible, and to the point as possible.
+Make a tech spec document of everything that was used to create this project, including all the technologies, Cloudflare dependencies, and what the front-end was made with etc.
 
 ---
 
