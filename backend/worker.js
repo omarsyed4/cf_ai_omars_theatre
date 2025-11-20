@@ -32,12 +32,6 @@ export default {
         return handleMemory(request, env, corsHeaders)
       }
 
-      if (path.startsWith('/api/scripts/') && request.method === 'GET') {
-        // Serve script files
-        const scriptId = path.split('/api/scripts/')[1]
-        return handleScriptRequest(scriptId, corsHeaders)
-      }
-
       return new Response('Not Found', { status: 404, headers: corsHeaders })
     } catch (error) {
       console.error('Error:', error)
@@ -54,23 +48,4 @@ export default {
 
 // Durable Object binding
 export { MemoryDO }
-
-// Helper to serve script files
-async function handleScriptRequest(scriptId, corsHeaders) {
-  // In production, these would be stored in KV or served from static assets
-  // For now, we'll return a placeholder that the frontend can handle
-  const scripts = {
-    'movie1': '/src/assets/scripts/movie1.json',
-    'movie2': '/src/assets/scripts/movie2.json',
-    'movie3': '/src/assets/scripts/movie3.json',
-    'movie4': '/src/assets/scripts/movie4.json',
-  }
-
-  return new Response(
-    JSON.stringify({ path: scripts[scriptId] || null }),
-    {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-    }
-  )
-}
 
