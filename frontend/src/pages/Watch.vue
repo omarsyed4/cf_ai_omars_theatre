@@ -1,34 +1,36 @@
 <template>
-  <div class="min-h-screen bg-black relative">
-    <!-- Video Container -->
+  <div class="min-h-screen bg-black relative overflow-hidden">
+    <!-- Video Container - Full Screen -->
     <div 
-      class="transition-all duration-500 ease-in-out"
-      :class="isPaused ? 'w-[40%]' : 'w-full'">
-      <video
+      class="absolute inset-0 transition-all duration-500 ease-in-out"
+      :class="showAIPanel ? 'right-[450px]' : 'right-0'">
+      <CustomVideoPlayer
         ref="videoPlayer"
-        :src="movie.videoUrl"
-        class="w-full h-screen object-contain"
+        :video-url="movie.videoUrl"
+        :movie-title="movie.title"
         @timeupdate="onTimeUpdate"
-        @loadedmetadata="onVideoLoaded"
-        controls
-        autoplay>
-        Your browser does not support the video tag.
-      </video>
+        @play="onVideoPlay"
+        @pause="onVideoPause"
+        @go-back="goBack" />
     </div>
 
-    <!-- Chat Panel -->
-    <div
-      v-if="isPaused"
-      class="fixed top-0 right-0 w-[60%] h-screen bg-theater-dark transition-transform duration-500 ease-in-out overflow-hidden shadow-ios-xl border-l border-white/10"
-      :class="isPaused ? 'translate-x-0' : 'translate-x-full'">
-      <ChatPanel
-        :current-time="currentTime"
-        :paused-at="pausedAt"
-        :movie-id="movieId"
-        @close="resumePlayback"
-        @jump-to="jumpToTimestamp"
-        @return-to-present="returnToPresent" />
-    </div>
+    <!-- AI Panel Side Panel (Floating) -->
+    <transition name="slide-in">
+      <div
+        v-if="showAIPanel"
+        class="fixed top-0 right-0 h-screen w-[450px] z-50 flex items-center p-4 pointer-events-none">
+        <div class="w-full h-[90vh] bg-gradient-to-br from-theater-dark via-theater-gray/50 to-theater-dark backdrop-blur-xl rounded-ios-xl border border-white/10 shadow-ios-xl pointer-events-auto overflow-hidden">
+          <ChatPanel
+            :current-time="currentTime"
+            :paused-at="pausedAt"
+            :movie-id="movieId"
+            @close="closeAIPanel"
+            @jump-to="jumpToTimestamp"
+            @return-to-present="returnToPresent"
+            @ask-follow-up="handleFollowUp" />
+        </div>
+      </div>
+    </transition>
 
     <!-- Tutorial Modal -->
     <TutorialModal
@@ -40,13 +42,15 @@
 <script>
 import ChatPanel from '../components/ChatPanel.vue'
 import TutorialModal from '../components/TutorialModal.vue'
+import CustomVideoPlayer from '../components/CustomVideoPlayer.vue'
 import { movies } from '../data/movies.js'
 
 export default {
   name: 'Watch',
   components: {
     ChatPanel,
-    TutorialModal
+    TutorialModal,
+    CustomVideoPlayer
   },
   props: {
     id: {
@@ -56,10 +60,11 @@ export default {
   },
   data() {
     return {
-      isPaused: false,
+      showAIPanel: false,
       currentTime: 0,
-      pausedAt: 0, // Track where user paused to enable "return to present"
-      showTutorial: false
+      pausedAt: 0,
+      showTutorial: false,
+      isVideoPlaying: false
     }
   },
   computed: {
@@ -77,57 +82,108 @@ export default {
       this.showTutorial = true
     }
 
-    // Listen for spacebar
+    // Listen for spacebar and escape
     window.addEventListener('keydown', this.handleKeyPress)
+    
+    // Auto-play video when component mounts
+    this.$nextTick(() => {
+      if (this.$refs.videoPlayer) {
+        setTimeout(() => {
+          this.$refs.videoPlayer.play()
+        }, 500)
+      }
+    })
+  },
+  watch: {
+    // Watch for route changes to reload video
+    id(newId) {
+      this.$nextTick(() => {
+        if (this.$refs.videoPlayer) {
+          setTimeout(() => {
+            this.$refs.videoPlayer.play()
+          }, 500)
+        }
+      })
+    }
   },
   beforeUnmount() {
     window.removeEventListener('keydown', this.handleKeyPress)
   },
   methods: {
     handleKeyPress(e) {
+      // Spacebar handling
       if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
         e.preventDefault()
-        this.togglePause()
+        
+        // If video is playing, pause and open AI
+        if (this.isVideoPlaying) {
+          this.pauseAndOpenAI()
+        }
+        // If video is paused and AI is open, close AI and resume
+        else if (!this.isVideoPlaying && this.showAIPanel) {
+          this.closeAIPanel()
+          this.resumePlayback()
+        }
+        // If video is paused and AI is closed, just play
+        else if (!this.isVideoPlaying && !this.showAIPanel) {
+          this.resumePlayback()
+        }
+      }
+      
+      // Escape key to close AI panel
+      if (e.key === 'Escape' && this.showAIPanel) {
+        this.closeAIPanel()
+        if (!this.isVideoPlaying) {
+          this.resumePlayback()
+        }
       }
     },
-    togglePause() {
-      if (!this.$refs.videoPlayer) return
-
-      if (this.isPaused) {
-        this.resumePlayback()
-      } else {
-        this.pausePlayback()
-      }
-    },
-    pausePlayback() {
+    pauseAndOpenAI() {
       if (this.$refs.videoPlayer) {
-        this.pausedAt = Math.floor(this.$refs.videoPlayer.currentTime)
+        this.pausedAt = this.$refs.videoPlayer.getCurrentTime()
         this.$refs.videoPlayer.pause()
-        this.isPaused = true
+        this.isVideoPlaying = false
+        this.showAIPanel = true
       }
     },
     resumePlayback() {
-      this.isPaused = false
-      this.$refs.videoPlayer.play()
-    },
-    onTimeUpdate() {
       if (this.$refs.videoPlayer) {
-        this.currentTime = Math.floor(this.$refs.videoPlayer.currentTime)
+        this.$refs.videoPlayer.play()
+        this.isVideoPlaying = true
       }
     },
-    onVideoLoaded() {
-      // Video metadata loaded
+    closeAIPanel() {
+      this.showAIPanel = false
+    },
+    onTimeUpdate(time) {
+      this.currentTime = time
+    },
+    onVideoPlay() {
+      this.isVideoPlaying = true
+      // Ensure AI panel is closed when video plays
+      if (this.showAIPanel) {
+        this.showAIPanel = false
+      }
+    },
+    onVideoPause() {
+      this.isVideoPlaying = false
     },
     jumpToTimestamp(timestamp) {
       if (this.$refs.videoPlayer) {
-        this.$refs.videoPlayer.currentTime = timestamp
-        // Don't resume automatically - let user watch from this point
+        this.$refs.videoPlayer.setCurrentTime(timestamp)
+        // Don't auto-play after jump
       }
     },
     returnToPresent() {
       if (this.$refs.videoPlayer && this.pausedAt > 0) {
-        this.$refs.videoPlayer.currentTime = this.pausedAt
+        this.$refs.videoPlayer.setCurrentTime(this.pausedAt)
       }
+    },
+    handleFollowUp() {
+      // This will be handled by ChatPanel - it will restart recording
+    },
+    goBack() {
+      this.$router.push('/')
     },
     closeTutorial() {
       this.showTutorial = false
@@ -137,3 +193,19 @@ export default {
 }
 </script>
 
+<style scoped>
+.slide-in-enter-active,
+.slide-in-leave-active {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.slide-in-enter-from {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-in-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+</style>
