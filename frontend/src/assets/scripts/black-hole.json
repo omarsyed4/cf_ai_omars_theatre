@@ -1,0 +1,18 @@
+[
+  { "timestamp": 0, "content": "A tired office worker sits alone at his desk late at night, printing documents on a copier.", "entities": ["Man", "Office", "Copier"] },
+  { "timestamp": 12, "content": "The man notices a mysterious black circular hole has appeared on one of the printed pages.", "entities": ["Man", "Black Hole", "Printed Page"] },
+  { "timestamp": 18, "content": "He picks up the page and examines the black hole, which appears to be a physical void on the paper.", "entities": ["Man", "Black Hole"] },
+  { "timestamp": 25, "content": "Curious, the man tests the hole by pushing his finger through it, discovering it's a portal.", "entities": ["Man", "Black Hole"] },
+  { "timestamp": 35, "content": "He pushes his entire hand through the black hole, confirming it can penetrate solid objects.", "entities": ["Man", "Black Hole"] },
+  { "timestamp": 45, "content": "The man realizes the black hole can be used to reach through surfaces. He tests it on his desk.", "entities": ["Man", "Black Hole", "Desk"] },
+  { "timestamp": 55, "content": "He places the page with the black hole on the vending machine and reaches through to grab a snack.", "entities": ["Man", "Black Hole", "Vending Machine"] },
+  { "timestamp": 68, "content": "The man places the black hole page on the office safe, planning to reach inside.", "entities": ["Man", "Black Hole", "Safe"] },
+  { "timestamp": 75, "content": "He reaches through the black hole into the safe and retrieves stacks of money.", "entities": ["Man", "Black Hole", "Safe", "Money"] },
+  { "timestamp": 90, "content": "Greed takes over. The man decides to climb through the black hole himself to get more money.", "entities": ["Man", "Black Hole", "Safe", "Money"] },
+  { "timestamp": 105, "content": "He attempts to crawl through the black hole, but it's too small for his body.", "entities": ["Man", "Black Hole"] },
+  { "timestamp": 120, "content": "The man tries to force himself through the black hole, pushing harder.", "entities": ["Man", "Black Hole"] },
+  { "timestamp": 135, "content": "The black hole begins to stretch and deform as the man forces his way through.", "entities": ["Man", "Black Hole"] },
+  { "timestamp": 148, "content": "The man gets stuck halfway through the black hole, trapped between dimensions.", "entities": ["Man", "Black Hole"] },
+  { "timestamp": 150, "content": "The black hole collapses, leaving the man permanently trapped, with only his legs visible on the office floor.", "entities": ["Man", "Black Hole", "Office"] }
+]
+

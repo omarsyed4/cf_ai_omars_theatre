@@ -1,0 +1,23 @@
+[
+  { "timestamp": 0, "content": "A father wakes up in a car, discovering he has been bitten. His wife is already transformed into a zombie.", "entities": ["Father", "Wife", "Infection", "Baby"] },
+  { "timestamp": 15, "content": "The father realizes he is infected and has limited time before he transforms. His baby is in the backseat.", "entities": ["Father", "Baby", "Infection"] },
+  { "timestamp": 30, "content": "The father looks at a map, planning his route. He knows he must get his baby to safety before he turns.", "entities": ["Father", "Baby", "Map"] },
+  { "timestamp": 50, "content": "The father creates a baby carrier using a backpack, positioning the baby on his back with a bottle of food attached to a stick.", "entities": ["Father", "Baby", "Baby Carrier"] },
+  { "timestamp": 70, "content": "He writes a note and attaches it to the baby carrier, explaining the situation and asking for help.", "entities": ["Father", "Baby", "Note"] },
+  { "timestamp": 90, "content": "The father begins walking through the Australian outback, following a scent trail left by survivors.", "entities": ["Father", "Baby", "Survivors", "Outback"] },
+  { "timestamp": 110, "content": "As he walks, the infection progresses. The father's movements become more zombie-like.", "entities": ["Father", "Infection"] },
+  { "timestamp": 130, "content": "The father follows the scent markers - pieces of cloth tied to trees - left by the survivors.", "entities": ["Father", "Survivors", "Scent Trail"] },
+  { "timestamp": 150, "content": "He continues walking, the baby safely on his back, feeding from the bottle attached to the stick.", "entities": ["Father", "Baby"] },
+  { "timestamp": 180, "content": "The father's transformation accelerates. He stumbles but keeps moving forward, driven by instinct to protect the baby.", "entities": ["Father", "Baby", "Infection"] },
+  { "timestamp": 210, "content": "He reaches a river and crosses it, still following the scent trail toward the survivors' camp.", "entities": ["Father", "Survivors", "Baby"] },
+  { "timestamp": 240, "content": "The father arrives at the survivors' camp. He is now fully transformed into a zombie.", "entities": ["Father", "Survivors", "Infection"] },
+  { "timestamp": 260, "content": "The survivors see the zombie approaching and prepare to defend themselves.", "entities": ["Survivors", "Father"] },
+  { "timestamp": 280, "content": "One survivor notices the baby on the zombie's back and the note attached to the carrier.", "entities": ["Survivors", "Baby", "Note"] },
+  { "timestamp": 300, "content": "The survivors read the note and understand the father's sacrifice. They realize he brought the baby to safety.", "entities": ["Survivors", "Father", "Baby", "Note"] },
+  { "timestamp": 320, "content": "The survivors carefully remove the baby from the zombie father's back, keeping the father at bay.", "entities": ["Survivors", "Father", "Baby"] },
+  { "timestamp": 340, "content": "The baby is safe. The survivors take the child, understanding the father's final act of love.", "entities": ["Survivors", "Baby", "Father"] },
+  { "timestamp": 360, "content": "The survivors bury the zombie father, honoring his sacrifice and the love that drove him to save his child.", "entities": ["Survivors", "Father", "Baby"] },
+  { "timestamp": 380, "content": "The baby is now in the care of the survivors, safe because of the father's selfless journey.", "entities": ["Baby", "Survivors", "Father"] },
+  { "timestamp": 420, "content": "The story ends with the baby safe, a testament to a father's love that transcended even death.", "entities": ["Baby", "Father", "Survivors"] }
+]
+
