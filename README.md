@@ -18,6 +18,14 @@ Simply pause the movie, ask your question out loud (or type it), and get an inst
 
 ---
 
+## 🚀 Try It Live
+
+**[👉 Experience the Live Demo](https://cf-ai-omars-theatre.pages.dev)**
+
+No installation required. Just click, watch, and ask away.
+
+---
+
 ## ✨ How It Works
 
 1. **Pick a Movie** - Browse our curated collection of short films
