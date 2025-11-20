@@ -1,0 +1,25 @@
+[
+  { "timestamp": 0, "content": "A young girl named Alma walks down a snowy street, pulling a sled behind her.", "entities": ["Alma", "Sled", "Street"] },
+  { "timestamp": 10, "content": "Alma notices a chalkboard on the street with her name written on it, surrounded by other names.", "entities": ["Alma", "Chalkboard"] },
+  { "timestamp": 20, "content": "She erases her name from the chalkboard, then continues walking down the empty street.", "entities": ["Alma", "Chalkboard"] },
+  { "timestamp": 33, "content": "Alma discovers a mysterious toy shop with a window full of dolls. The shop appears to be closed.", "entities": ["Alma", "Toy Shop", "Dolls"] },
+  { "timestamp": 45, "content": "She presses her face against the window, fascinated by the dolls inside, especially one that looks exactly like her.", "entities": ["Alma", "Dolls", "Toy Shop"] },
+  { "timestamp": 60, "content": "Alma tries the door handle, but the shop is locked. She looks around, then tries again.", "entities": ["Alma", "Toy Shop"] },
+  { "timestamp": 75, "content": "The door suddenly opens on its own. Alma hesitates, then enters the dark toy shop.", "entities": ["Alma", "Toy Shop"] },
+  { "timestamp": 85, "content": "Inside, the shop is filled with shelves of dolls and toys. Alma walks through the aisles.", "entities": ["Alma", "Toy Shop", "Dolls"] },
+  { "timestamp": 91, "content": "Alma approaches the doll that looks exactly like her, which is positioned on a high shelf.", "entities": ["Alma", "Dolls"] },
+  { "timestamp": 105, "content": "She reaches up to touch the doll, but it's just out of reach. She stands on her toes.", "entities": ["Alma", "Dolls"] },
+  { "timestamp": 120, "content": "Alma notices the doll's eyes are following her movements. The doll seems alive.", "entities": ["Alma", "Dolls"] },
+  { "timestamp": 135, "content": "She tries to grab the doll, but it moves slightly out of reach each time.", "entities": ["Alma", "Dolls"] },
+  { "timestamp": 150, "content": "Alma climbs onto a nearby toy to get closer to the doll on the shelf.", "entities": ["Alma", "Dolls", "Toy Shop"] },
+  { "timestamp": 165, "content": "She finally touches the doll's hand. The doll's finger moves and touches her hand back.", "entities": ["Alma", "Dolls"] },
+  { "timestamp": 180, "content": "Alma's hand becomes stuck to the doll's hand. She tries to pull away but cannot.", "entities": ["Alma", "Dolls"] },
+  { "timestamp": 195, "content": "Her entire body begins to be pulled toward the doll. She struggles but is powerless.", "entities": ["Alma", "Dolls"] },
+  { "timestamp": 210, "content": "Alma is pulled completely inside the doll's body. Her consciousness transfers into the doll.", "entities": ["Alma", "Dolls"] },
+  { "timestamp": 230, "content": "The doll on the shelf now has Alma's eyes and expression. She is trapped inside.", "entities": ["Alma", "Dolls"] },
+  { "timestamp": 250, "content": "A new doll appears on the shelf below, identical to the original Alma, ready for the next victim.", "entities": ["Dolls", "Toy Shop"] },
+  { "timestamp": 260, "content": "The camera pulls back, revealing the toy shop window from outside, with Alma now as a doll inside.", "entities": ["Alma", "Dolls", "Toy Shop"] },
+  { "timestamp": 270, "content": "Another child approaches the shop, drawn to the window, beginning the cycle again.", "entities": ["Toy Shop", "Dolls"] },
+  { "timestamp": 330, "content": "The cycle continues as the toy shop waits for its next victim.", "entities": ["Toy Shop", "Dolls"] }
+]
+
