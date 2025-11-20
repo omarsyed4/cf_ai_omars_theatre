@@ -155,7 +155,7 @@ export default {
   mounted() {
     console.log('[ChatPanel] Component mounted')
     this.initSpeechRecognition()
-    // Load chat history from localStorage
+    // Load chat history from sessionStorage (clears when tab closes)
     this.loadChatHistory()
     // Auto-start recording when panel opens
     this.$nextTick(() => {
@@ -165,7 +165,7 @@ export default {
   },
   beforeUnmount() {
     this.stopRecording()
-    // Save chat history to localStorage
+    // Save chat history to sessionStorage (clears when tab closes)
     this.saveChatHistory()
   },
   watch: {
@@ -477,8 +477,9 @@ export default {
     },
     loadChatHistory() {
       try {
+        // Use sessionStorage instead of localStorage - clears when tab closes
         const historyKey = `chat_history_${this.movieId}`
-        const savedHistory = localStorage.getItem(historyKey)
+        const savedHistory = sessionStorage.getItem(historyKey)
         if (savedHistory) {
           this.messages = JSON.parse(savedHistory)
           // Find last AI message index
@@ -488,17 +489,22 @@ export default {
               break
             }
           }
+          console.log('[ChatPanel] Loaded chat history from session:', this.messages.length, 'messages')
+        } else {
+          console.log('[ChatPanel] No previous chat history found for this session')
         }
       } catch (error) {
-        console.error('Error loading chat history:', error)
+        console.error('[ChatPanel] Error loading chat history:', error)
       }
     },
     saveChatHistory() {
       try {
+        // Use sessionStorage instead of localStorage - clears when tab closes
         const historyKey = `chat_history_${this.movieId}`
-        localStorage.setItem(historyKey, JSON.stringify(this.messages))
+        sessionStorage.setItem(historyKey, JSON.stringify(this.messages))
+        console.log('[ChatPanel] Saved chat history to session:', this.messages.length, 'messages')
       } catch (error) {
-        console.error('Error saving chat history:', error)
+        console.error('[ChatPanel] Error saving chat history:', error)
       }
     }
   }
