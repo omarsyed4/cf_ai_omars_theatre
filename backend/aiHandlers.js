@@ -142,9 +142,9 @@ IMPORTANT RULES:
 
 Your response:`
 
-    // Call Llama 3.3
+    // Call Llama 3.1 (70B model)
     const aiResponse = await env.AI.run(
-      '@cf/meta/llama-3.3-70b-instruct',
+      '@cf/meta/llama-3.1-70b-instruct',
       {
         messages: [
           {
