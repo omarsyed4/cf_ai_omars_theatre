@@ -1,0 +1,24 @@
+name = "omars-theater-backend"
+main = "worker.js"
+compatibility_date = "2024-12-01"
+
+# Workers AI binding
+[ai]
+binding = "AI"
+
+# R2 bucket binding for film assets
+[[r2_buckets]]
+binding = "FILMS"
+bucket_name = "omars-theater-films"
+
+# Durable Object binding
+[[durable_objects.bindings]]
+name = "MEMORY"
+class_name = "MemoryDO"
+script_name = "omars-theater-backend"
+
+# Durable Object migrations
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["MemoryDO"]
+
