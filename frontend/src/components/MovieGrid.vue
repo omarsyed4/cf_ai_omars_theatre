@@ -1,10 +1,12 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-    <MovieCard
-      v-for="movie in movies"
-      :key="movie.id"
-      :movie="movie"
-      @click="$emit('select', movie.id)" />
+  <div class="flex justify-center">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl">
+      <MovieCard
+        v-for="movie in movies"
+        :key="movie.id"
+        :movie="movie"
+        @click="$emit('select', movie.id)" />
+    </div>
   </div>
 </template>
 

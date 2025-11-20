@@ -5,9 +5,10 @@
     <div class="relative aspect-video bg-theater-gray rounded-ios-xl overflow-hidden mb-4 shadow-ios hover:shadow-ios-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
       <img
         v-if="movie.thumbnailUrl || movie.poster"
-        :src="movie.thumbnailUrl || movie.poster"
+        :src="encodeURI(movie.thumbnailUrl || movie.poster)"
         :alt="movie.title"
-        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        @error="handleImageError" />
       <div v-else class="w-full h-full flex items-center justify-center bg-gradient-to-br from-theater-gray to-theater-dark">
         <FilmIcon class="w-16 h-16 text-gray-500" />
       </div>
@@ -15,8 +16,8 @@
       <!-- Overlay with play button -->
       <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
         <div class="transform scale-75 group-hover:scale-100 transition-all duration-300 opacity-0 group-hover:opacity-100">
-          <div class="w-20 h-20 bg-white/95 backdrop-blur-md rounded-full flex items-center justify-center shadow-ios-xl">
-            <PlayIcon class="w-10 h-10 text-black ml-1" />
+          <div class="w-20 h-20 bg-gradient-to-br from-theater-primary to-theater-secondary backdrop-blur-md rounded-full flex items-center justify-center shadow-ios-xl">
+            <PlayIcon class="w-10 h-10 text-white ml-1" />
           </div>
         </div>
       </div>
@@ -56,6 +57,13 @@ export default {
       required: true
     }
   },
-  emits: ['click']
+  emits: ['click'],
+  methods: {
+    handleImageError(event) {
+      console.error('Failed to load image:', event.target.src)
+      // Fallback to placeholder or hide image
+      event.target.style.display = 'none'
+    }
+  }
 }
 </script>
