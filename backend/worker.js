@@ -1,5 +1,5 @@
 import { MemoryDO } from './durableObject.js'
-import { handleQuery, handleMemory } from './aiHandlers.js'
+import { handleTranscribe, handleQuery, handleMemory } from './aiHandlers.js'
 
 export default {
   async fetch(request, env) {
@@ -20,6 +20,10 @@ export default {
 
     try {
       // Route handling
+      if (path === '/api/transcribe' && request.method === 'POST') {
+        return handleTranscribe(request, env, corsHeaders)
+      }
+
       if (path === '/api/query' && request.method === 'POST') {
         return handleQuery(request, env, corsHeaders)
       }

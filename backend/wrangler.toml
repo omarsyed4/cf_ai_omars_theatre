@@ -21,4 +21,3 @@ script_name = "omars-theater-backend"
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["MemoryDO"]
-
