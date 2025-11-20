@@ -162,11 +162,15 @@ export default {
       console.log('[ChatPanel] Auto-starting recording, messages count:', this.messages.length)
       this.startRecording()
     })
+    // Add global Enter key listener for follow-up questions
+    window.addEventListener('keydown', this.handleGlobalEnterKey)
   },
   beforeUnmount() {
     this.stopRecording()
     // Save chat history to sessionStorage (clears when tab closes)
     this.saveChatHistory()
+    // Remove global Enter key listener
+    window.removeEventListener('keydown', this.handleGlobalEnterKey)
   },
   watch: {
     messages: {
@@ -181,15 +185,9 @@ export default {
       deep: true
     },
     isLoading(newVal) {
-      // When AI finishes responding, focus input for follow-up (user must press Enter to start mic)
+      // When AI finishes responding, don't auto-focus (user can press Enter anywhere to start mic)
       if (!newVal && this.lastAIMessageIndex >= 0) {
-        this.$nextTick(() => {
-          if (this.$refs.textInputRef) {
-            this.$refs.textInputRef.focus()
-          }
-          // Mic will only start when user presses Enter (handled by handleEnterKey)
-          console.log('[ChatPanel] AI finished, waiting for user to press Enter for follow-up')
-        })
+        console.log('[ChatPanel] AI finished, waiting for user to press Enter for follow-up')
       }
     },
     movieId() {
@@ -322,9 +320,24 @@ export default {
         this.startRecording()
       }
     },
+    handleGlobalEnterKey(e) {
+      // Only handle Enter when panel is visible and not typing in input/textarea
+      if (e.key === 'Enter' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+        // If AI just responded and not loading, start recording for follow-up
+        if (!this.isLoading && this.lastAIMessageIndex >= 0 && this.messages[this.lastAIMessageIndex].role === 'assistant') {
+          e.preventDefault()
+          if (!this.isRecording && !this.textInput.trim()) {
+            console.log('[ChatPanel] Global Enter key pressed - starting mic for follow-up')
+            this.startRecording()
+            this.$emit('ask-follow-up')
+          }
+        }
+      }
+    },
     handleEnterKey(e) {
       // If there's text, send it
       if (this.textInput.trim()) {
+        e.preventDefault()
         this.sendMessage()
         return
       }
@@ -333,6 +346,7 @@ export default {
       if (!this.isLoading && this.lastAIMessageIndex >= 0 && this.messages[this.lastAIMessageIndex].role === 'assistant') {
         e.preventDefault()
         if (!this.isRecording) {
+          console.log('[ChatPanel] Enter key pressed in input - starting mic for follow-up')
           this.startRecording()
           this.$emit('ask-follow-up')
         }
