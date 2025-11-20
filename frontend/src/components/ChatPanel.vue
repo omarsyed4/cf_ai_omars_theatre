@@ -114,7 +114,7 @@ import {
   StopIcon,
   PaperAirplaneIcon
 } from '@heroicons/vue/24/solid'
-import API_BASE from '../config/api.js'
+import { getApiBase } from '../config/api.js'
 
 export default {
   name: 'ChatPanel',
@@ -385,12 +385,13 @@ export default {
       }
       
       console.log('[ChatPanel] Sending request to /api/query:', requestBody)
-      console.log('[ChatPanel] API_BASE value:', API_BASE)
       console.log('[ChatPanel] Current hostname:', window.location.hostname)
       console.log('[ChatPanel] Current origin:', window.location.origin)
 
       try {
-        const apiUrl = `${API_BASE}/api/query`
+        const apiBase = getApiBase(); // Evaluate at runtime
+        const apiUrl = `${apiBase}/api/query`
+        console.log('[ChatPanel] API_BASE value:', apiBase)
         console.log('[ChatPanel] Constructed API URL:', apiUrl)
         console.log('[ChatPanel] Making fetch request to:', apiUrl)
         

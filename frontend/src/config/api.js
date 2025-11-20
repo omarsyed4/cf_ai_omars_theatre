@@ -5,7 +5,7 @@
 const WORKER_URL = "https://omars-theater-backend.omarsyed0504.workers.dev";
 
 // Function to get API base URL (evaluated at runtime, not build time)
-function getApiBase() {
+export function getApiBase() {
   // Check if we're in a browser environment
   if (typeof window === 'undefined') {
     return WORKER_URL; // SSR fallback
@@ -27,8 +27,6 @@ function getApiBase() {
   return apiBase;
 }
 
-// Export the function result (evaluated at module load time in browser)
-const API_BASE = getApiBase();
-
-export default API_BASE;
+// Export default for backward compatibility (but prefer using getApiBase() at runtime)
+export default getApiBase();
 
