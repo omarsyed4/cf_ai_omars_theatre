@@ -9,7 +9,7 @@ export const movies = [
     durationSeconds: 150,
     videoUrl: `${R2_PUBLIC_URL}/black-hole/video.mp4`,
     scriptUrl: `${R2_PUBLIC_URL}/black-hole/script.json`,
-    thumbnailUrl: 'https://via.placeholder.com/1280x720/1a1a1a/ffffff?text=The+Black+Hole',
+    thumbnailUrl: '/thumbnails/the black hole.jpg',
     year: 2008
   },
   {
@@ -20,7 +20,7 @@ export const movies = [
     durationSeconds: 330,
     videoUrl: `${R2_PUBLIC_URL}/alma/video.mp4`,
     scriptUrl: `${R2_PUBLIC_URL}/alma/script.json`,
-    thumbnailUrl: 'https://via.placeholder.com/1280x720/1a1a1a/ffffff?text=Alma',
+    thumbnailUrl: '/thumbnails/Alma.jpg',
     year: 2009
   },
   {
@@ -31,7 +31,7 @@ export const movies = [
     durationSeconds: 420,
     videoUrl: `${R2_PUBLIC_URL}/cargo/video.mp4`,
     scriptUrl: `${R2_PUBLIC_URL}/cargo/script.json`,
-    thumbnailUrl: 'https://via.placeholder.com/1280x720/1a1a1a/ffffff?text=Cargo',
+    thumbnailUrl: '/thumbnails/cargo.jpg',
     year: 2013
   }
 ]
