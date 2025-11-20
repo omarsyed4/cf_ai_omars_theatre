@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'theater-primary': '#007AFF',
-        'theater-secondary': '#5856D6',
+        'theater-primary': '#F4811F',
+        'theater-secondary': '#FAAD3F',
         'theater-dark': '#1C1C1E',
         'theater-gray': '#2C2C2E',
         'theater-light': '#F2F2F7',
