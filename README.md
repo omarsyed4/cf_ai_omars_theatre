@@ -18,14 +18,6 @@ Simply pause the movie, ask your question out loud (or type it), and get an inst
 
 ---
 
-## 🚀 Try It Live
-
-**[👉 Experience the Demo](https://your-cloudflare-pages-url.pages.dev)** *(Coming soon - link will be updated after deployment)*
-
-No installation required. Just click, watch, and ask away.
-
----
-
 ## ✨ How It Works
 
 1. **Pick a Movie** - Browse our curated collection of short films
@@ -36,17 +28,6 @@ No installation required. Just click, watch, and ask away.
 6. **Continue** - Resume watching whenever you're ready
 
 **That's it.** No complicated setup, no spoilers, no interruptions.
-
----
-
-## 🎨 Features
-
-- **🎤 Voice & Text Input** - Ask questions naturally, either by speaking or typing
-- **🚫 Spoiler-Free** - AI only knows what's happened up to where you paused
-- **🧠 Conversation Memory** - The AI remembers your questions and provides context
-- **⏱️ Timestamp Links** - Jump directly to moments the AI references
-- **🎬 Beautiful UI** - Modern, Netflix-inspired interface that's a joy to use
-- **⚡ Instant Responses** - Powered by Cloudflare's edge network for lightning-fast answers
 
 ---
 
@@ -83,7 +64,7 @@ This project showcases the power of **Cloudflare's edge computing platform**:
 
 ## 📚 For Developers
 
-Interested in the technical details? Check out our [Technical Documentation](./TECHNICAL.md) for:
+Interested in the technical details? Check out the [Technical Documentation](./TECHNICAL.md) for:
 
 - Architecture overview
 - API specifications
@@ -94,7 +75,7 @@ Interested in the technical details? Check out our [Technical Documentation](./T
 
 ## 🙏 Credits
 
-Built with ❤️ using Cloudflare Workers AI and Llama 3.1
+Built using Cloudflare Workers AI and Llama 3.1
 
 **Assignment for Cloudflare • Submitted by Omar Syed**
 
