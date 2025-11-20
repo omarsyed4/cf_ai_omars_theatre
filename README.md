@@ -8,6 +8,14 @@ You know that moment—you're watching a film, something confusing happens, and 
 
 ---
 
+## 🚀 Try It Live
+
+**[👉 Experience the Live Demo](https://cf-ai-omars-theatre.pages.dev)**
+
+No installation required. Just click, watch, and ask away.
+
+---
+
 ## 🎯 What Is This?
 
 Omar's Theater is an AI-powered movie streaming platform that lets you ask questions about what you're watching—**without spoilers, without interruptions, and without bothering anyone.**
@@ -15,14 +23,6 @@ Omar's Theater is an AI-powered movie streaming platform that lets you ask quest
 Simply pause the movie, ask your question out loud (or type it), and get an instant, spoiler-free explanation based on exactly where you are in the film. The AI remembers your conversation, understands context, and even lets you jump back to moments it references.
 
 **It's like having a movie expert sitting next to you, but one that never spoils the ending.**
-
----
-
-## 🚀 Try It Live
-
-**[👉 Experience the Live Demo](https://cf-ai-omars-theatre.pages.dev)**
-
-No installation required. Just click, watch, and ask away.
 
 ---
 
